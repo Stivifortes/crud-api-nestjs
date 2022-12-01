@@ -31,7 +31,7 @@ export class UsersController {
   }
 
   @Get()
-  async fetchAll(@Res() response) {
+  async fetchAllUsers(@Res() response) {
     const users = await this.usersService.getUsers();
     return response.status(HttpStatus.OK).json({
       users,
@@ -39,7 +39,7 @@ export class UsersController {
   }
 
   @Get('/:id')
-  async findById(@Res() response, @Param('id') id) {
+  async findUserById(@Res() response, @Param('id') id) {
     const user = await this.usersService.getUserById(id);
     return response.status(HttpStatus.OK).json({
       user,
@@ -47,7 +47,7 @@ export class UsersController {
   }
 
   @Put('/:id')
-  async update(@Res() response, @Param('id') id, @Body() user: User) {
+  async updateUser(@Res() response, @Param('id') id, @Body() user: User) {
     const updatedUser = await this.usersService.updateUser(id, user);
     return response.status(HttpStatus.OK).json({
       updatedUser,
@@ -55,7 +55,7 @@ export class UsersController {
   }
 
   @Delete('/:id')
-  async delete(@Res() response, @Param('id') id) {
+  async deleteUser(@Res() response, @Param('id') id) {
     const deletedUser = await this.usersService.deleteUser(id);
     return response.status(HttpStatus.OK).json({
       deletedUser,
